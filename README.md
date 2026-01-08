@@ -8,11 +8,7 @@ An implementation of various CPU scheduling algorithms in C++. The algorithms in
     - [Round Robin with varying time quantum (RR)](#round-robin-with-varying-time-quantum-rr)
     - [Shortest Process Next (SPN)](#shortest-process-next-spn)
     - [Shortest Remaining Time (SRT)](#shortest-remaining-time-srt)
-    - [Highest Response Ratio Next (HRRN)](#highest-response-ratio-next-hrrn)
-    - [Feedback (FB)](#feedback-fb)
-    - [Feedback with varying time quantum (FBV)](#feedback-with-varying-time-quantum-fbv)
     - [Aging](#aging)
-  - [Installation](#installation)
   - [Input Format](#input-format)
 
 ## Algorithms
@@ -44,29 +40,6 @@ An implementation of various CPU scheduling algorithms in C++. The algorithms in
 
 - In summary, SRT is a scheduling algorithm that prioritizes the execution of processes based on their remaining time, it's a preemptive algorithm, which means that it can interrupt a process that's already executing if a new process with a shorter remaining time arrives and it's commonly used in situations where the objective is to minimize the average waiting time for processes and burst time is not known in advance.
 
-### Highest Response Ratio Next (HRRN)
-
-- Highest Response Ratio Next (HRRN) is a scheduling algorithm that prioritizes the execution of processes based on their response ratio. It is a non-preemptive algorithm which means that once a process starts executing, it runs until completion or until it enters a waiting state.
-
-- The response ratio is calculated by taking the ratio of the waiting time of a process and its burst time. The process with the highest response ratio is executed first, and as new processes arrive, they are added to the queue and sorted based on their response ratio. The process with the highest response ratio will always be at the front of the queue, and thus will always be executed next.
-
-- This algorithm can be beneficial in situations where the objective is to minimize the average waiting time for processes, since processes with longer waiting times will be executed first, and thus will spend less time waiting in the queue. Additionally, it can be useful in situations where the burst time of processes is not known in advance, since the algorithm can adapt to changes in the waiting time as the process is executing.
-
-- In summary, HRRN is a scheduling algorithm that prioritizes the execution of processes based on their response ratio, it's non-preemptive and it's commonly used in situations where the objective is to minimize the average waiting time for processes and burst time is not known in advance.
-
-### Feedback (FB)
-
-- Feedback is a scheduling algorithm that allocates CPU time to different processes based on their priority level. It is a multi-level priority algorithm that uses multiple priority queues, each with a different priority level.
-
-- Processes with higher priority levels are executed first, and as new processes arrive, they are added to the appropriate priority queue based on their priority level. When a process completes execution, it is moved to the next lower priority queue.
-
-- This algorithm can be beneficial in situations where the system needs to handle a mix of short and long-running processes, as well as processes with varying priority levels. By having multiple priority queues, it ensures that processes with higher priority levels are executed first, while also allowing lower-priority processes to eventually be executed.
-
-- In summary, Feedback is a scheduling algorithm that allocates CPU time based on priority levels, it uses multiple priority queues with different levels of priority, processes with higher priority levels are executed first and when process completes execution, it is moved to the next lower priority queue, it's commonly used in situations where system needs to handle a mix of short and long-running processes, as well as processes with varying priority levels.
-
-### Feedback with varying time quantum (FBV)
-- Same as [Feedback](#feedback-fb) but with varying time quantum.
-- Feedback with varying time quantum also uses multiple priority queues and assigns a different time quantum for each priority level, it allows the algorithm to be more efficient by spending more time on higher-priority processes and less time on lower-priority processes.
 
 ### Aging
 
@@ -88,16 +61,7 @@ the following steps.
     - The scheduler choses the highest priority process from among all the eligible processes.
 
 - Note that during each call to the scheduler, the complete ready list has to be traversed.
-## Installation
-1- Clone the repository
 
-2- Install g++ compiler and make
-```bash
-sudo apt-get install g++ make
-```
-3- Compile the code using `make` command
-
-4- Run the executable file
 
 ## Input Format
 - Line 1: "trace" or "stats"
